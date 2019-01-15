@@ -14,6 +14,8 @@ def login(request):
 	pass
 
 
+'''
+这里是增加数据库的方式
 def show(request):
 	if request.method == 'POST':
 		a_user = request.POST['a_user']
@@ -33,3 +35,18 @@ def show(request):
 	user_list = models.UserInfo.objects.all() #取出该表所有的数据
 
 	return render(request, 'show.html', {'user_list' : user_list})
+'''
+def show(request):
+
+	if request.method == 'POST':
+		a_user = request.POST['a_user']
+		a_pwd = request.POST['a_pwd']
+
+		#删除数据
+		models.UserInfo.objects.filter(user=a_user).delete()
+
+	user_list = models.UserInfo.objects.all()
+	return render(request, 'show.html', {'user_list' : user_list})
+
+
+
