@@ -57,3 +57,18 @@ class Host(models.Model):
 	hostname = models.CharField(max_length=30)
 	#Foreignkey是一对多，在django2.0后面要加上on_delete=models.cascade
 	game = models.ForeignKey('Game', on_delete=models.CASCADE)
+
+
+class UserGroup(models.Model):
+	group_name = models.CharField(max_length=16)
+
+
+class User(models.Model):
+	name = models.CharField(max_length=16)
+	sex = models.CharField(max_length=18)
+	email = models.EmailField(max_length=18)
+	usergroup_user = models.ManyToManyField('UserGroup')
+
+
+
+
