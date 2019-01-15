@@ -69,6 +69,16 @@ class User(models.Model):
 	email = models.EmailField(max_length=18)
 	usergroup_user = models.ManyToManyField('UserGroup')
 
+class User2(models.Model):
+	name = models.CharField(max_length=16)
+	sex = models.CharField(max_length=16)
+	email = models.EmailField(max_length=16)
+
+class  Admin(models.Model):
+	username = models.CharField(max_length=32)
+	password = models.CharField(max_length=32)
+	#这里的OneToOneField是一对一的增加，不能重复
+	admin_user2 = models.OneToOneField('User2', on_delete=models.CASCADE)
 
 
 
