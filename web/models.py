@@ -16,3 +16,18 @@ class UserInfo(models.Model):
     def __str__(self):
     	return self.title
 
+
+class Addtime(models.Model):
+
+    class Meta:
+        db_table = 'add_time'
+        verbose_name_plural = "日期及其他类型"
+    name = models.CharField(max_length=30)
+    ctime = models.DateTimeField(auto_now=True)
+    uptime = models.DateTimeField(auto_now_add=True)
+    info  = models.CharField(max_length=50)
+
+    def __str__(self):
+    	return self.info
+        
+    

@@ -16,25 +16,25 @@ def login(request):
 
 
 # 这里是增加数据库的方式
-def show(request):
-	if request.method == 'POST':
-		a_user = request.POST['a_user']
-		a_pwd = request.POST['a_pwd']
-		#第一种增加数据方式
-		# models.UserInfo.objects.create(user=a_user, opwd=a_pwd)
+# def show(request):
+# 	if request.method == 'POST':
+# 		a_user = request.POST['a_user']
+# 		a_pwd = request.POST['a_pwd']
+# 		#第一种增加数据方式
+# 		# models.UserInfo.objects.create(user=a_user, opwd=a_pwd)
 
-		#第二种增加数据方式
-		# obj = models.UserInfo(user=a_user, opwd=a_pwd)
-		# obj.save()
+# 		#第二种增加数据方式
+# 		# obj = models.UserInfo(user=a_user, opwd=a_pwd)
+# 		# obj.save()
 
-		#第三种增加数据的方式
-		dic = {'user':a_user, 'opwd':a_pwd}
-		models.UserInfo.objects.create(**dic)
+# 		#第三种增加数据的方式
+# 		dic = {'user':a_user, 'opwd':a_pwd}
+# 		models.UserInfo.objects.create(**dic)
 
 
-	user_list = models.UserInfo.objects.all() #取出该表所有的数据
+# 	user_list = models.UserInfo.objects.all() #取出该表所有的数据
 
-	return render(request, 'show.html', {'user_list' : user_list})
+# 	return render(request, 'show.html', {'user_list' : user_list})
 '''
 #这里是删除数据的方式
 def show(request):
@@ -67,3 +67,14 @@ def show(request):
 
 	user_list = models.UserInfo.objects.all()
 	return render(request, 'show.html', {'user_list' : user_list})
+
+
+def home(request):
+	if request.method == 'POST':
+		a_name = request.POST['a_name']
+		
+		models.Addtime.objects.create(name = a_name)
+
+	
+	result = models.Addtime.objects.all()
+	return render(request, 'home.html', {'result' : result})

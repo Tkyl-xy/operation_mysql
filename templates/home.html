@@ -1,0 +1,27 @@
+<body>
+	<form action="/home/" method="post">
+		新增用户姓名:<br>
+		<input type="text" name="a_name"><br>
+		<input type="submit" value="提交用户姓名" />
+	</form>
+	<div>
+		<table border="2">
+			<thead>
+				<tr>
+					<th>用户姓名</th>
+					<th>ctime</th>
+					<th>uptime</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for line in result %}
+					<tr>
+						<td>{{ line.name }}</td>
+						<td>{{ line.ctime }}</td>
+						<td>{{ line.uptime }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</body>

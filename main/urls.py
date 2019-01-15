@@ -23,4 +23,5 @@ urlpatterns = [
     path('son/', views.son),
     path('login/', views.login),
     path('show/', views.show),
+    path('home/',views.home)
 ]
