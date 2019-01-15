@@ -14,8 +14,8 @@ def login(request):
 	pass
 
 
-'''
-这里是增加数据库的方式
+
+# 这里是增加数据库的方式
 def show(request):
 	if request.method == 'POST':
 		a_user = request.POST['a_user']
@@ -36,6 +36,7 @@ def show(request):
 
 	return render(request, 'show.html', {'user_list' : user_list})
 '''
+#这里是删除数据的方式
 def show(request):
 
 	if request.method == 'POST':
@@ -47,6 +48,22 @@ def show(request):
 
 	user_list = models.UserInfo.objects.all()
 	return render(request, 'show.html', {'user_list' : user_list})
+'''
+
+#这里是修改数据库里的数据方式
+def show(request):
+	if request.method == 'POST':
+		a_user = request.POST['a_user']
+		a_pwd = request.POST['a_pwd']
+
+		#这里是第一种修改数据的方式
+		# models.UserInfo.objects.filter(user=a_user).update(opwd=a_pwd)
+
+		#这里是第二种修改数据的方式
+		obj = models.UserInfo.objects.get(user=a_user)
+		obj.opwd = a_pwd
+		obj.save()
 
 
-
+	user_list = models.UserInfo.objects.all()
+	return render(request, 'show.html', {'user_list' : user_list})
