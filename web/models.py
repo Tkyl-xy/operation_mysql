@@ -22,6 +22,7 @@ class Addtime(models.Model):
     class Meta:
         db_table = 'add_time'
         verbose_name_plural = "日期及其他类型"
+
     name = models.CharField(max_length=30)
     ctime = models.DateTimeField(auto_now=True)
     uptime = models.DateTimeField(auto_now_add=True)
@@ -35,3 +36,24 @@ class Addtime(models.Model):
     	return self.info
         
     
+class Choices(models.Model):
+
+	class Meta:
+		db_table = 'choices'
+		verbose_name_plural = '下拉框样式'
+
+	LIST = (
+			(1, 'user'),
+			(2, 'admin'),
+			(3, 'like'),
+		)
+	user_type = models.IntegerField(choices=LIST, default=1, verbose_name='下拉选择')
+
+
+class Game(models.Model):
+	gname = models.CharField(max_length=30)
+
+class Host(models.Model):
+	hostname = models.CharField(max_length=30)
+	#Foreignkey是一对多，在django2.0后面要加上on_delete=models.cascade
+	game = models.ForeignKey('Game', on_delete=models.CASCADE)
