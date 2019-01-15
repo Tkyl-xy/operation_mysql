@@ -75,6 +75,7 @@ def home(request):
 		
 		models.Addtime.objects.create(name = a_name)
 
+
 	
 	result = models.Addtime.objects.all()
 	return render(request, 'home.html', {'result' : result})

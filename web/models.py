@@ -26,6 +26,10 @@ class Addtime(models.Model):
     ctime = models.DateTimeField(auto_now=True)
     uptime = models.DateTimeField(auto_now_add=True)
     info  = models.CharField(max_length=50)
+    email = models.EmailField(max_length=30, null=True)
+    email2 = models.EmailField(max_length=50, default='yang123@qq.com')
+    ip = models.GenericIPAddressField(protocol="ipv4", null=True,blank=True)
+    img = models.ImageField(null=True, blank=True, upload_to="images/")
 
     def __str__(self):
     	return self.info
